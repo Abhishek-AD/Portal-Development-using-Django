@@ -1,0 +1,4 @@
+To use the book room you have to make the following changes -
+
+1. Add Email User and Password in embryo_project/settings.py
+2. Add the email to which you want to share the mail to in basic_apps/views.py
