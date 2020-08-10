@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends "basic_app/base.html"%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}" />
+
+{% block body_block %}
+
+<center>
+  <h1>Event Expenses </h1>
+  <hr>
+
+  <div class="form-group">
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <label for="sel">Select Event:</label>
+      <select name="event" required class="form-control" id="sel">
+        <option value="">None</option>
+        {% for entry in item_records %}
+        <option value="{{ entry.topic }}">{{ entry.topic }}</option>
+        {% endfor %}
+
+
+
+      </select>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <hr>
+
+  <h3><b>{{ expenditure_topic}}</b></h3><br>
+
+  {% if expense_records %}
+  <table class="table table-hover">
+    <thead>
+      <th scope="col">Type of Expense</th>
+      <th scope="col">Amount (in Rs.)</th>
+      <th scope="col">Date</th>
+
+
+    </thead>
+    {% for i in expense_records %}
+    <tr>
+      <td>{{i.type}}</td>
+      <td>{{i.amount}}</td>
+      <td>{{i.date}}</td>
+
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+
+  {% endif %}
+
+
+
+  {% endblock %}

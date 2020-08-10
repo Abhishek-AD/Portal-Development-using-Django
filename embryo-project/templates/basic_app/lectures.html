@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% extends "basic_app/base.html"%}
+
+{% block body_block %}
+<center>
+  <h1>Events</h1>
+
+  <div class="form-group">
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <!-- <label for="sel1">Select discipline:</label>
+          <select name="discipline" required class="form-control" id="sel1">
+            <option value="">None</option>
+            <option value="All">All</option>
+            <option value="BIO">Biological Sciences</option>
+            <option value="CHE">Chemical</option>
+            <option value="CHEM">Chemistry</option>
+            <option value="CS">Computer Science</option>
+            <option value="EEE">Electical and Electronics</option>
+            <option value="ECON">Economics and Finances</option>
+            <option value="HSS">Humanities and Social Sciences</option>
+            <option value="MATH">Mathematics</option>
+            <option value="ME">Mechanical</option>
+            <option value="PHA">Pharmacy</option>
+            <option value="PHY">Physics</option>
+            <option value="BITS">Other</option>
+          </select>
+          <br> -->
+
+
+
+
+
+      <label for="sel2">Select Start Year:</label>
+      <select name="yearstart" required class="form-control" id="sel2">
+        <option value="">None</option>
+        <option value="All">All</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+
+      </select>
+      <br>
+
+
+
+      <label for="sel2">Select End Year:</label>
+      <select name="year" required class="form-control" id="sel2">
+        <option value="">None</option>
+        <option value="All">All</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+
+      </select>
+      <br>
+   
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <!-- <input type="submit" value="Submit"> -->
+    </form>
+  </div>
+
+
+
+  {% if lecture_records %}
+  <table class="table table-hover">
+    <thead>
+      <th scope="col">Topic</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date</th>
+      <th scope="col">Venue</th>
+      <th scope="col">Time</th>
+
+    </thead>
+    {% for i in lecture_records %}
+    <tr>
+      <td>
+
+        <a href="{% url 'basic_app:event' i.eventID %}">
+
+          {{i.topic}}
+
+      </td>
+      <td>{{i.description}}</td>
+      <td>{{i.date}}</td>
+      <td>{{i.venue}}</td>
+      <td>{{i.eventID}}</td>
+
+    </tr></a>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p> No Records Found</p>
+  {% endif %}
+  {% endblock%}

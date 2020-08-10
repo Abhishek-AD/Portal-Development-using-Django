@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends "basic_app/base.html"%}
+
+
+{% block body_block %}
+
+<center>
+  <h1>Welcome to Room Booking </h1>
+  <hr>
+
+  <div class="form-group">
+
+    <form method="POST" id="myForm">
+      {% csrf_token %}
+
+      <label for="event">Event</label>
+      <input type="text" class="form-control" name="event" required id="eventid"><br>
+
+      <label for="time">Time</label>
+      <input type="text" class="form-control" name="time" required id="timeid"><br>
+
+      <label for="room">Room Number</label>
+      <input type="text" class="form-control" name="room" required id="roomid"><br>
+
+      <label for="date">Date</label>
+      <input type="text" class="form-control" name="date" required id="dateid"><br>
+
+      <button type="submit" class="btn btn-primary">Submit </button>
+
+    </form>
+  </div>
+  <script>
+    document.getElementById("myForm").addEventListener("submit", myFunction);
+
+    function myFunction() {
+      alert("Do you want to submit?");
+    }
+
+  </script>
+
+
+  {% endblock %}

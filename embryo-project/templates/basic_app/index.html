@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% extends "basic_app/base.html"%}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}" />
+
+{% block body_block %}
+<div class="intro">
+	<center>
+		<h1><b>WELCOME TO EMBRYO </b></h1>
+		<hr>
+		<h3>
+			<p align="justify"> <i>BITS Embryo is a forum to foster and enhance the learning experience with a strong
+
+					collaboration amongst students and faculties at BITS Pilani.
+
+
+					<br> Conceived by the alumni from BITS Pilani in 2006, BITS Embryo has developed into a
+					transformation
+					in classroom education. BITS Embryo is a project to foster strong collaboration of BITS students and
+					BITS faculty with the alumni of BITS Pilani. Via on-line, live and interactive lectures, run by
+					students
+					and faculties of BITS-Pilani, BITS Embryo has successfully conducted more than 200 lectures in areas
+					as
+					wide ranging as Entrepreneurship, Black Holes, Solar Cells, Science of Smell, Naxalism, Rain water
+					harvesting,Storage Networks, PSOCs, Process Control.
+				</i>
+			</p>
+		</h3>
+
+	</center>
+</div>
+
+
+
+
+<div class="sidenav" style="float:right;overflow: auto;">
+
+	<br>
+	<h4 style="color:white;"> Annoucements </h4>
+	<marquee class="sidenav" scrollamount="4" direction="up" loop="true">
+		<center>
+			<h3> Upcoming Events </h3><br><br>
+
+			{% for i in index_records %}
+			<tr>
+				<td><a href="{% url 'basic_app:event' i.eventID %}"> {{i.topic}}</td>
+				<br>
+				<td>{{i.date}}</td>
+				<hr>
+
+			</tr>
+			{% endfor %}
+
+			</a>
+
+			<p>
+		</center>
+	</marquee>
+</div>
+{% endblock %}

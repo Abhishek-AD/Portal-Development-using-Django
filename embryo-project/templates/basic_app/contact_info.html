@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends "basic_app/base.html"%}
+
+{% block body_block %}
+<h1>Contact Us </h1>
+
+<h5>
+  <ul>
+    <li>Email: embryo@hyderabad.bits-pilani.ac.in</li>
+    <br>
+    <li>FB Page: <a href="https://www.facebook.com/BITSEmbryoHyd/"> facebook.com/BITSEmbryoHyd/ </a> </li>
+    <br>
+    <li>Twitter Handle: <a href="https://twitter.com/BITSembryohyd"> twitter.com/BITSembryohyd </a> </li>
+  </ul>
+
+  {% if member_records %}
+  <table class="table table-bordered">
+    <thead>
+      <th scope="col">Position</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+
+    </thead>
+    {% for i in new_events %}
+    <tr>
+      <td>{{i.topic}}</td>
+    </tr>
+    {% endfor %}
+    {% for i in member_records %}
+    <tr>
+      <td>{{i.get_position_display}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.phone}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p> No Records Found</p>
+  {% endif %}
+
+  {% endblock%}
